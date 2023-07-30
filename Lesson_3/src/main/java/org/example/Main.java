@@ -16,9 +16,6 @@ class Node {
 }
 
 public class Main {
-    public Main() {
-    }
-
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             Random ran = new Random();
