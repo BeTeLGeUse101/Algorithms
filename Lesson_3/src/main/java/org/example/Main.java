@@ -20,20 +20,30 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Random ran = new Random();
-        System.out.print("Введите длину списка: ");
-        int length = scanner.nextInt();
-        DoublyLinkedList list = new DoublyLinkedList();
+        try (Scanner scanner = new Scanner(System.in)) {
+            Random ran = new Random();
 
-        for(int i = 0; i < length; ++i) {
-            list.addNode(ran.nextInt(1, length * 2));
+            while (true) {
+                try {
+                    System.out.print("Введите длину списка: ");
+                    int length = scanner.nextInt();
+                    DoublyLinkedList list = new DoublyLinkedList();
+
+                    for (int i = 0; i < length; ++i) {
+                        list.addNode(ran.nextInt(1, length * 2));
+                    }
+
+                    System.out.println("\nИсходный список:");
+                    list.display();
+                    list.revert();
+                    System.out.println("Развёрнутый список:");
+                    list.display();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Ошибка ввода! Введите целое число.");
+                    scanner.nextLine();
+                }
+            }
         }
-
-        System.out.println("Исходный список:");
-        list.display();
-        list.revert();
-        System.out.println("Развёрнутый список:");
-        list.display();
     }
 }
